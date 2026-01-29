@@ -1,4 +1,4 @@
-const API = "https://TON_BACKEND_RENDER.onrender.com";
+const API = "https://silver-backend-652w.onrender.com";
 
 async function loadData() {
   const latest = await fetch(`${API}/api/latest`).then(r => r.json());
@@ -39,3 +39,4 @@ async function loadData() {
 }
 
 loadData();
+
