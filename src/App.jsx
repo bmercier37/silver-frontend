@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SpreadChart from "./components/SpreadChart";
-import GoldSilverRatioChart from "./GoldSilverRatioChart";
+import GoldSilverRatioChart from "./components/GoldSilverRatioChart";
 
 
 function App() {
@@ -158,5 +158,6 @@ const styles = {
 };
 
 export default App;
+
 
 
