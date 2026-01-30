@@ -78,7 +78,7 @@ function App() {
       <footer style={styles.footer}>
         <p>
           Data source: ChinaFXTools · Last update{" "}
-          {data ? new Date(data.timestamp).toUTCString() : "—"}
+          {latest ? new Date(latest.timestamp).toUTCString() : "—"}
         </p>
       </footer>
     </div>
@@ -143,6 +143,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
