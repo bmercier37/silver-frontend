@@ -1,4 +1,23 @@
+import { useEffect, useState } from "react";
+
 function App() {
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch("https://silver-backend-real.onrender.com/api/latest")
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.error) {
+          throw new Error(json.error);
+        }
+        setData(json);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  }, []);
+
   return (
     <div style={styles.page}>
       <header style={styles.header}>
@@ -11,28 +30,59 @@ function App() {
       <main style={styles.main}>
         <section style={styles.card}>
           <h2>Latest Market Snapshot</h2>
-          <p style={styles.placeholder}>
-            Live data will appear here shortly.
-          </p>
+
+          {error && <p style={styles.error}>Error: {error}</p>}
+
+          {!data && !error && (
+            <p style={styles.placeholder}>Loading market data…</p>
+          )}
+
+          {data && (
+            <ul style={styles.list}>
+              <li>
+                <strong>Silver NY:</strong> {data.silverNY.toFixed(2)} USD/oz
+              </li>
+              <li>
+                <strong>Silver London:</strong>{" "}
+                {data.silverLondon.toFixed(2)} USD/oz
+              </li>
+              <li>
+                <strong>Silver Shanghai:</strong>{" "}
+                {data.silverSHA.toFixed(2)} USD/oz
+              </li>
+              <li>
+                <strong>Gold NY:</strong> {data.goldNY.toFixed(2)} USD/oz
+              </li>
+              <li>
+                <strong>Gold/Silver Ratio:</strong>{" "}
+                {data.goldSilverRatio.toFixed(2)}
+              </li>
+              <li>
+                <strong>Shanghai–NY Spread:</strong>{" "}
+                {data.spreadSHA_NY.toFixed(2)} %
+              </li>
+            </ul>
+          )}
         </section>
 
         <section style={styles.card}>
           <h2>Market Indicators</h2>
-          <p style={styles.placeholder}>
-            Charts coming next 📈
-          </p>
+          <p style={styles.placeholder}>Charts coming next 📈</p>
         </section>
 
         <section style={styles.card}>
           <h2>Market Interpretation</h2>
           <p style={styles.placeholder}>
-            Analytical insights and recommendations will be displayed here.
+            Automated market analysis coming soon.
           </p>
         </section>
       </main>
 
       <footer style={styles.footer}>
-        <p>Data source: ChinaFXTools · Updated automatically</p>
+        <p>
+          Data source: ChinaFXTools · Last update{" "}
+          {data ? new Date(data.timestamp).toUTCString() : "—"}
+        </p>
       </footer>
     </div>
   );
@@ -74,9 +124,17 @@ const styles = {
     borderRadius: "8px",
     padding: "1.5rem",
   },
+  list: {
+    listStyle: "none",
+    padding: 0,
+    marginTop: "1rem",
+    lineHeight: "1.8",
+  },
   placeholder: {
     color: "#777",
-    marginTop: "0.5rem",
+  },
+  error: {
+    color: "red",
   },
   footer: {
     padding: "1rem 1.5rem",
