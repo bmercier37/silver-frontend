@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import SpreadChart from "./components/SpreadChart";
+
 
 function App() {
   const [data, setData] = useState(null);
@@ -65,11 +67,13 @@ function App() {
           )}
         </section>
 
+
         <section style={styles.card}>
-          <h2>Market Indicators</h2>
-          <p style={styles.placeholder}>Charts coming next 📈</p>
+          <h2>Shanghai – New York Spread</h2>
+          <SpreadChart />
         </section>
 
+        
         <section style={styles.card}>
           <h2>Market Interpretation</h2>
           <p style={styles.placeholder}>
@@ -146,3 +150,4 @@ const styles = {
 };
 
 export default App;
+
