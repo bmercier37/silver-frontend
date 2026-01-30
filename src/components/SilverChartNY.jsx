@@ -35,7 +35,7 @@ export default function SilverChartNY() {
           labels,
           datasets: [
             {
-              label: "Silver – NY (USD/ounce)",
+              label: "Silver – NY (USD/oz)",
               data: values,
               borderWidth: 2,
               tension: 0.3,
@@ -65,7 +65,7 @@ export default function SilverChartNY() {
         scales: {
           y: {
             ticks: {
-              callback: (value) => `${value}%`,
+              callback: (value) => `${value}$`,
             },
           },
         },
