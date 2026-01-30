@@ -10,7 +10,9 @@ function App() {
   const [latest, setLatest] = useState(null);
 
   useEffect(() => {
-    fetch("https://silver-backend-real.onrender.com/api/latest")
+    fetch("https://silver-backend-real.onrender.com/api/latest", {
+  cache: "no-store"
+})
       .then((res) => res.json())
       .then((data) => {
         console.log("LATEST DATA:", data); // 👈 DEBUG IMPORTANT
@@ -149,6 +151,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
