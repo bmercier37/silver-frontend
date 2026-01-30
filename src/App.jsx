@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SpreadChart from "./components/SpreadChart";
+import GoldSilverRatioChart from "./GoldSilverRatioChart";
 
 
 function App() {
@@ -72,6 +73,13 @@ function App() {
           <h2>Shanghai – New York Spread</h2>
           <SpreadChart />
         </section>
+
+        
+        <section style={styles.card}>
+          <h2>Shanghai – New York Spread</h2>
+          <GoldSilverRatioChart />
+        </section>
+
 
         
         <section style={styles.card}>
@@ -150,4 +158,5 @@ const styles = {
 };
 
 export default App;
+
 
