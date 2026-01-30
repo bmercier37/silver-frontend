@@ -12,15 +12,13 @@ function App() {
   useEffect(() => {
     fetch("https://silver-backend-real.onrender.com/api/latest")
       .then((res) => res.json())
-      .then((json) => {
-        if (json.error) {
-          throw new Error(json.error);
+      .then((data) => {
+        console.log("LATEST DATA:", data); // 👈 DEBUG IMPORTANT
+        if (!data.error) {
+          setLatest(data);
         }
-        setData(json);
       })
-      .catch((err) => {
-        setError(err.message);
-      });
+      .catch((err) => console.error("API latest error", err));
   }, []);
 
   return (
@@ -162,6 +160,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
