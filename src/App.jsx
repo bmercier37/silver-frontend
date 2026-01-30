@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import SpreadChart from "./components/SpreadChart";
 import GoldSilverRatioChart from "./components/GoldSilverRatioChart";
+import Recommendation from "./Recommendation";
 
 
 function App() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const [latest, setLatest] = useState(null);
 
   useEffect(() => {
     fetch("https://silver-backend-real.onrender.com/api/latest")
@@ -84,9 +86,11 @@ function App() {
         
         <section style={styles.card}>
           <h2>Market Interpretation</h2>
-          <p style={styles.placeholder}>
-            Automated market analysis coming soon.
-          </p>
+         {latest ? (
+            <Recommendation data={latest} />
+          ) : (
+            <p style={styles.placeholder}>Loading market analysis…</p>
+          )}
         </section>
       </main>
 
@@ -158,6 +162,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
