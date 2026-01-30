@@ -5,7 +5,6 @@ import Recommendation from "./Recommendation";
 
 
 function App() {
-  const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [latest, setLatest] = useState(null);
 
@@ -36,36 +35,20 @@ function App() {
 
           {error && <p style={styles.error}>Error: {error}</p>}
 
-          {!data && !error && (
-            <p style={styles.placeholder}>Loading market data…</p>
-          )}
+         {!latest && !error && (
+  <p style={styles.placeholder}>Loading market data…</p>
+)}
 
-          {data && (
-            <ul style={styles.list}>
-              <li>
-                <strong>Silver NY:</strong> {data.silverNY.toFixed(2)} USD/oz
-              </li>
-              <li>
-                <strong>Silver London:</strong>{" "}
-                {data.silverLondon.toFixed(2)} USD/oz
-              </li>
-              <li>
-                <strong>Silver Shanghai:</strong>{" "}
-                {data.silverSHA.toFixed(2)} USD/oz
-              </li>
-              <li>
-                <strong>Gold NY:</strong> {data.goldNY.toFixed(2)} USD/oz
-              </li>
-              <li>
-                <strong>Gold/Silver Ratio:</strong>{" "}
-                {data.goldSilverRatio.toFixed(2)}
-              </li>
-              <li>
-                <strong>Shanghai–NY Spread:</strong>{" "}
-                {data.spreadSHA_NY.toFixed(2)} %
-              </li>
-            </ul>
-          )}
+{latest && (
+  <ul style={styles.list}>
+    <li><strong>Silver NY:</strong> {latest.silverNY.toFixed(2)} USD/oz</li>
+    <li><strong>Silver London:</strong> {latest.silverLondon.toFixed(2)} USD/oz</li>
+    <li><strong>Silver Shanghai:</strong> {latest.silverSHA.toFixed(2)} USD/oz</li>
+    <li><strong>Gold NY:</strong> {latest.goldNY.toFixed(2)} USD/oz</li>
+    <li><strong>Gold/Silver Ratio:</strong> {latest.goldSilverRatio.toFixed(2)}</li>
+    <li><strong>Shanghai–NY Spread:</strong> {latest.spreadSHA_NY.toFixed(2)} %</li>
+  </ul>
+)}
         </section>
 
 
@@ -160,6 +143,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
