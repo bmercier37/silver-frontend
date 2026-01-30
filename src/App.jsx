@@ -76,7 +76,7 @@ function App() {
 
         
         <section style={styles.card}>
-          <h2>Shanghai – New York Spread</h2>
+          <h2>Gold/Silver ratio</h2>
           <GoldSilverRatioChart />
         </section>
 
@@ -158,6 +158,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
