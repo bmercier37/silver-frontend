@@ -4,6 +4,10 @@ import SilverChartNY from "./components/SilverChartNY";
 import GoldSilverRatioChart from "./components/GoldSilverRatioChart";
 import Recommendation from "./Recommendation";
 
+// Fonction sécurisée pour afficher des nombres
+function safeFixed(value, decimals = 2) {
+  return value != null ? value.toFixed(decimals) : "—";
+}
 
 function App() {
   const [error, setError] = useState(null);
@@ -11,16 +15,21 @@ function App() {
 
   useEffect(() => {
     fetch("https://silver-backend-real.onrender.com/api/latest", {
-  cache: "no-store"
-})
+      cache: "no-store"
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log("LATEST DATA:", data); // 👈 DEBUG IMPORTANT
         if (!data.error) {
           setLatest(data);
+        } else {
+          setError(data.error);
         }
       })
-      .catch((err) => console.error("API latest error", err));
+      .catch((err) => {
+        console.error("API latest error", err);
+        setError(err.message);
+      });
   }, []);
 
   return (
@@ -38,25 +47,24 @@ function App() {
 
           {error && <p style={styles.error}>Error: {error}</p>}
 
-         {!latest && !error && (
-  <p style={styles.placeholder}>Loading market data…</p>
-)}
+          {!latest && !error && (
+            <p style={styles.placeholder}>Loading market data…</p>
+          )}
 
-{latest && (
-  <ul style={styles.list}>
-    <li><strong>Silver NY:</strong> {latest.silverNY.toFixed(2)} USD/oz</li>
-    <li><strong>Silver London:</strong> {latest.silverLondon.toFixed(2)} USD/oz</li>
-    <li><strong>Silver Shanghai:</strong> {latest.silverSHA.toFixed(2)} USD/oz</li>
-    <li><strong>Gold NY:</strong> {latest.goldNY.toFixed(2)} USD/oz</li>
-    <li><strong>Gold/Silver Ratio:</strong> {latest.goldSilverRatio.toFixed(2)}</li>
-    <li><strong>Shanghai–NY Spread:</strong> {latest.spreadSHA_NY.toFixed(2)} %</li>
-  </ul>
-)}
+          {latest && (
+            <ul style={styles.list}>
+              <li><strong>Silver NY:</strong> {safeFixed(latest.silverNY)} USD/oz</li>
+              <li><strong>Silver London:</strong> {safeFixed(latest.silverLondon)} USD/oz</li>
+              <li><strong>Silver Shanghai:</strong> {safeFixed(latest.silverSHA)} USD/oz</li>
+              <li><strong>Gold NY:</strong> {safeFixed(latest.goldNY)} USD/oz</li>
+              <li><strong>Gold/Silver Ratio:</strong> {safeFixed(latest.goldSilverRatio)}</li>
+              <li><strong>Shanghai–NY Spread:</strong> {safeFixed(latest.spreadSHA_NY)} %</li>
+            </ul>
+          )}
         </section>
 
-
         <section style={styles.card}>
-          <h2>Silver – New York </h2>
+          <h2>Silver – New York</h2>
           <SilverChartNY />
         </section>
 
@@ -65,17 +73,14 @@ function App() {
           <SpreadChart />
         </section>
 
-        
         <section style={styles.card}>
           <h2>Gold/Silver ratio</h2>
           <GoldSilverRatioChart />
         </section>
 
-
-        
         <section style={styles.card}>
           <h2>Market Interpretation</h2>
-         {latest ? (
+          {latest ? (
             <Recommendation data={latest} />
           ) : (
             <p style={styles.placeholder}>Loading market analysis…</p>
@@ -151,13 +156,3 @@ const styles = {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
