@@ -53,7 +53,7 @@ function App() {
 
           {latest && (
             <ul style={styles.list}>
-              <li><strong>Silver NY:</strong> {safeFixed(latest.silverNY)} USD/oz</li>
+              <li><strong>Silver NY:</strong> {safeFixed(latest.silverny)} USD/oz</li>
               <li><strong>Silver London:</strong> {safeFixed(latest.silverLondon)} USD/oz</li>
               <li><strong>Silver Shanghai:</strong> {safeFixed(latest.silverSHA)} USD/oz</li>
               <li><strong>Gold NY:</strong> {safeFixed(latest.goldNY)} USD/oz</li>
@@ -156,3 +156,4 @@ const styles = {
 };
 
 export default App;
+
