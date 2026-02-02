@@ -37,6 +37,8 @@ export default function GoldSilverRatioChart() {
             {
               label: "Gold / Silver Ratio",
               data: values,
+              borderColor: "yellow",
+              backgroundColor: "yellow",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
