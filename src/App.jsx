@@ -64,17 +64,17 @@ function App() {
         </section>
 
         <section style={styles.card}>
-          <h2>Silver – New York</h2>
+  //        <h2>Silver – New York</h2>
           <SilverChartNY />
-        </section>
+  //      </section>
 
-        <section style={styles.card}>
-          <h2>Shanghai – New York Spread</h2>
+  //      <section style={styles.card}>
+  //        <h2>Shanghai – New York Spread</h2>
           <SpreadChart />
-        </section>
+  //      </section>
 
-        <section style={styles.card}>
-          <h2>Gold/Silver ratio</h2>
+  //      <section style={styles.card}>
+  //        <h2>Gold/Silver ratio</h2>
           <GoldSilverRatioChart />
         </section>
 
@@ -156,6 +156,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
