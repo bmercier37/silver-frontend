@@ -39,6 +39,8 @@ export default function SpreadChart() {
             {
               label: "Shanghai – NY Spread (%)",
               data: spreadsha,
+              borderColor: "red",
+              backgroundColor: "red",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
@@ -46,6 +48,8 @@ export default function SpreadChart() {
             {
               label: "DE – NY Spread (%)",
               data: spreadde,
+              borderColor: "black",
+              backgroundColor: "black",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
