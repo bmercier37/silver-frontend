@@ -22,6 +22,7 @@ ChartJS.register(
 export default function SpreadChart() {
   const [chartData, setChartData] = useState(null);
 
+
   useEffect(() => {
     fetch("https://silver-backend-real.onrender.com/api/history")
       .then((res) => res.json())
@@ -29,14 +30,22 @@ export default function SpreadChart() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
-        const values = data.map((d) => d.spreadsha_ny);
+        const spreadsha = data.map((d) => d.spreadsha_ny);
+        const spreadde = data.map((d) => d.spreadde_ny);
 
         setChartData({
           labels,
           datasets: [
             {
               label: "Shanghai – NY Spread (%)",
-              data: values,
+              data: spreadsha,
+              borderWidth: 2,
+              tension: 0.3,
+              pointRadius: 2,
+            },
+            {
+              label: "DE – NY Spread (%)",
+              data: spreadde,
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
