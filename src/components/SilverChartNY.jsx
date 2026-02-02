@@ -30,12 +30,13 @@ export default function SilverChartNY() {
           new Date(d.timestamp).toLocaleDateString()
         );
         const values = data.map((d) => d.silverny);
-
+        const values = data.map((d) => d.silversha);
+        
         setChartData({
           labels,
           datasets: [
             {
-              label: "Silver – NY (USD/oz)",
+              label: "Silver – NY & SHA (USD/oz)",
               data: values,
               borderWidth: 2,
               tension: 0.3,
