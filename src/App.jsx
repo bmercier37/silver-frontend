@@ -54,11 +54,11 @@ function App() {
           {latest && (
             <ul style={styles.list}>
               <li><strong>Silver NY:</strong> {safeFixed(latest.silverny)} USD/oz</li>
-              <li><strong>Silver London:</strong> {safeFixed(latest.silverLondon)} USD/oz</li>
-              <li><strong>Silver Shanghai:</strong> {safeFixed(latest.silverSHA)} USD/oz</li>
-              <li><strong>Gold NY:</strong> {safeFixed(latest.goldNY)} USD/oz</li>
-              <li><strong>Gold/Silver Ratio:</strong> {safeFixed(latest.goldSilverRatio)}</li>
-              <li><strong>Shanghai–NY Spread:</strong> {safeFixed(latest.spreadSHA_NY)} %</li>
+              <li><strong>Silver London:</strong> {safeFixed(latest.silverlondon)} USD/oz</li>
+              <li><strong>Silver Shanghai:</strong> {safeFixed(latest.silversha)} USD/oz</li>
+              <li><strong>Gold NY:</strong> {safeFixed(latest.goldny)} USD/oz</li>
+              <li><strong>Gold/Silver Ratio:</strong> {safeFixed(latest.goldsilverratio)}</li>
+              <li><strong>Shanghai–NY Spread:</strong> {safeFixed(latest.spreadsha_ns)} %</li>
             </ul>
           )}
         </section>
@@ -156,4 +156,5 @@ const styles = {
 };
 
 export default App;
+
 
