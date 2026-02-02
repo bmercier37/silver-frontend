@@ -39,6 +39,8 @@ export default function SilverChartNY() {
             {
               label: "Silver NY (USD/oz)",
               data: silverNY,
+              borderColor: "blue",
+              backgroundColor: "red",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
@@ -46,6 +48,8 @@ export default function SilverChartNY() {
             {
               label: "Silver Shanghai (USD/oz)",
               data: silverSHA,
+              borderColor: "red",
+              backgroundColor: "yellow",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
