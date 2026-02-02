@@ -29,15 +29,23 @@ export default function SilverChartNY() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
-        const values = data.map((d) => d.silverny);
-        const values = data.map((d) => d.silversha);
-        
+
+        const silverNY = data.map((d) => d.silverny);
+        const silverSHA = data.map((d) => d.silversha);
+
         setChartData({
           labels,
           datasets: [
             {
-              label: "Silver – NY & SHA (USD/oz)",
-              data: values,
+              label: "Silver NY (USD/oz)",
+              data: silverNY,
+              borderWidth: 2,
+              tension: 0.3,
+              pointRadius: 2,
+            },
+            {
+              label: "Silver Shanghai (USD/oz)",
+              data: silverSHA,
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
@@ -49,7 +57,7 @@ export default function SilverChartNY() {
   }, []);
 
   if (!chartData) {
-    return <p style={{ color: "#777" }}>Loading spread chart…</p>;
+    return <p style={{ color: "#777" }}>Loading silver chart…</p>;
   }
 
   return (
