@@ -29,7 +29,7 @@ export default function SilverChartNY() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
-        const values = data.map((d) => d.silverNY);
+        const values = data.map((d) => d.silverny);
 
         setChartData({
           labels,
