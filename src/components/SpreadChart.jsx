@@ -29,7 +29,7 @@ export default function SpreadChart() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
-        const values = data.map((d) => d.spreadSHA_NY);
+        const values = data.map((d) => d.spreadsha_ny);
 
         setChartData({
           labels,
