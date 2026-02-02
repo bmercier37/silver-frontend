@@ -60,7 +60,7 @@ function App() {
               <li><strong>Gold NY:</strong> {safeFixed(latest.goldny)} USD/oz</li>
               <li><strong>Gold/Silver Ratio:</strong> {safeFixed(latest.goldsilverratio)}</li>
               <li><strong>Shanghai–NY Spread:</strong> {safeFixed(latest.spreadsha_ny)} %</li>
-              <li><strong>Shanghai–NY Spread:</strong> {safeFixed(latest.spreadde_ny)} %</li>
+              <li><strong>DE–NY Spread:</strong> {safeFixed(latest.spreadde_ny)} %</li>
             </ul>
           )}
         </section>
@@ -149,6 +149,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
