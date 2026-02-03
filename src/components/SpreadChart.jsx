@@ -31,6 +31,7 @@ export default function SpreadChart() {
           new Date(d.timestamp).toLocaleDateString()
         );
         const spreadsha = data.map((d) => d.spreadsha_ny);
+        const spreadde = data.map((d) => d.spreadin_ny);
         const spreadde = data.map((d) => d.spreadde_ny);
 
         setChartData({
@@ -41,6 +42,15 @@ export default function SpreadChart() {
               data: spreadsha,
               borderColor: "red",
               backgroundColor: "red",
+              borderWidth: 2,
+              tension: 0.3,
+              pointRadius: 2,
+            },
+            {
+              label: "IN – NY Spread (%)",
+              data: spreadin,
+              borderColor: "orange",
+              backgroundColor: "orange",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
