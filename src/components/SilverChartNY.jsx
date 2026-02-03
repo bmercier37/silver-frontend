@@ -32,6 +32,7 @@ export default function SilverChartNY() {
 
         const silverNY = data.map((d) => d.silverny);
         const silverSHA = data.map((d) => d.silversha);
+        const silverIN = data.map((d) => d.silverin);
         const silverDE = data.map((d) => d.silverde);
 
         setChartData({
@@ -51,6 +52,15 @@ export default function SilverChartNY() {
               data: silverDE,
               borderColor: "black",
               backgroundColor: "black",
+              borderWidth: 2,
+              tension: 0.3,
+              pointRadius: 2,
+            },
+             {
+              label: "Silver IN (USD/oz)",
+              data: silverIN,
+              borderColor: "orange",
+              backgroundColor: "orange",
               borderWidth: 2,
               tension: 0.3,
               pointRadius: 2,
