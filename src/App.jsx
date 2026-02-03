@@ -56,10 +56,12 @@ function App() {
               <li><strong>Silver NY:</strong> {safeFixed(latest.silverny)} USD/oz</li>
               <li><strong>Silver London:</strong> {safeFixed(latest.silverlondon)} USD/oz</li>
               <li><strong>Silver Shanghai:</strong> {safeFixed(latest.silversha)} USD/oz</li>
+              <li><strong>Silver India:</strong> {safeFixed(latest.silverin)} USD/oz</li>
               <li><strong>Silver DE:</strong> {safeFixed(latest.silverde)} USD/oz</li>
               <li><strong>Gold NY:</strong> {safeFixed(latest.goldny)} USD/oz</li>
               <li><strong>Gold/Silver Ratio:</strong> {safeFixed(latest.goldsilverratio)}</li>
               <li><strong>Shanghai–NY Spread:</strong> {safeFixed(latest.spreadsha_ny)} %</li>
+              <li><strong>India–NY Spread:</strong> {safeFixed(latest.spreadin_ny)} %</li>
               <li><strong>DE–NY Spread:</strong> {safeFixed(latest.spreadde_ny)} %</li>
             </ul>
           )}
@@ -149,6 +151,7 @@ const styles = {
 };
 
 export default App;
+
 
 
 
