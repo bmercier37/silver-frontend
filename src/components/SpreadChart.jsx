@@ -31,7 +31,7 @@ export default function SpreadChart() {
           new Date(d.timestamp).toLocaleDateString()
         );
         const spreadsha = data.map((d) => d.spreadsha_ny);
-        const spreadde = data.map((d) => d.spreadin_ny);
+        const spreadin = data.map((d) => d.spreadin_ny);
         const spreadde = data.map((d) => d.spreadde_ny);
 
         setChartData({
