@@ -29,11 +29,24 @@ export default function SilverChartNY() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
+        
+    function fillZeroWithPrevious(values) {
+      let lastValid = null;
+    
+        return values.map((v) => {
+        if (v && v > 0) {
+          lastValid = v;
+          return v;
+        }
+        return lastValid;
+      });
+    }
 
-        const silverNY = data.map((d) => d.silverny);
-        const silverSHA = data.map((d) => d.silversha);
-        const silverIN = data.map((d) => d.silverin);
-        const silverDE = data.map((d) => d.silverde);
+const silverNY = fillZeroWithPrevious(data.map((d) => d.silverny));
+const silverSHA = fillZeroWithPrevious(data.map((d) => d.silversha));
+const silverIN = fillZeroWithPrevious(data.map((d) => d.silverin));
+const silverDE = fillZeroWithPrevious(data.map((d) => d.silverde));
+
 
         setChartData({
           labels,
