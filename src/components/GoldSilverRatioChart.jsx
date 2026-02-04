@@ -29,7 +29,21 @@ export default function GoldSilverRatioChart() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
-        const values = data.map((d) => d.goldsilverratio);
+
+
+            function fillZeroWithPrevious(values) {
+      let lastValid = null;
+    
+        return values.map((v) => {
+        if (v && v > 0) {
+          lastValid = v;
+          return v;
+        }
+        return lastValid;
+      });
+    }
+
+const values = fillZeroWithPrevious(data.map((d) => d.goldsilverratio));
 
         setChartData({
           labels,
