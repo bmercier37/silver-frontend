@@ -22,7 +22,7 @@ ChartJS.register(
 export default function SpreadChart() {
   const [chartData, setChartData] = useState(null);
 
-
+  
   useEffect(() => {
     fetch("https://silver-backend-real.onrender.com/api/history")
       .then((res) => res.json())
@@ -30,9 +30,23 @@ export default function SpreadChart() {
         const labels = data.map((d) =>
           new Date(d.timestamp).toLocaleDateString()
         );
-        const spreadsha = data.map((d) => d.spreadsha_ny);
-        const spreadin = data.map((d) => d.spreadin_ny);
-        const spreadde = data.map((d) => d.spreadde_ny);
+
+    function fillZeroWithPrevious(values) {
+      let lastValid = null;
+    
+        return values.map((v) => {
+        if (v && v > 0) {
+          lastValid = v;
+          return v;
+        }
+        return lastValid;
+      });
+    }
+
+const spreadsha = fillZeroWithPrevious(data.map((d) => d.spreadsha_ny));
+const spreadin = fillZeroWithPrevious(data.map((d) => d.spreadin_ny));
+const spreadde = fillZeroWithPrevious(data.map((d) => d.spreadde_ny));
+        
 
         setChartData({
           labels,
